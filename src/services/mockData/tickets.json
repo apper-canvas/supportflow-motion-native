@@ -1,0 +1,90 @@
+[
+  {
+    "Id": 1,
+    "title": "Unable to access dashboard after login",
+    "description": "User reports that after successful login, the dashboard page shows a blank screen. This started happening after the latest update. Browser console shows no errors.",
+    "status": "Open",
+    "priority": "High",
+    "category": "Technical Issue",
+    "customerId": 1,
+    "createdAt": "2024-01-15T09:30:00Z",
+    "updatedAt": "2024-01-15T09:30:00Z"
+  },
+  {
+    "Id": 2,
+    "title": "Billing question about subscription upgrade",
+    "description": "Customer wants to understand the pricing difference between Pro and Enterprise plans. They need clarification on what features are included in each tier.",
+    "status": "In Progress",
+    "priority": "Medium",
+    "category": "Billing",
+    "customerId": 2,
+    "createdAt": "2024-01-14T14:22:00Z",
+    "updatedAt": "2024-01-15T10:15:00Z"
+  },
+  {
+    "Id": 3,
+    "title": "Feature request: Export data functionality",
+    "description": "Customer would like the ability to export their data in CSV format. They manage large datasets and need this for their monthly reporting.",
+    "status": "Open",
+    "priority": "Low",
+    "category": "Feature Request",
+    "customerId": 3,
+    "createdAt": "2024-01-14T11:45:00Z",
+    "updatedAt": "2024-01-14T11:45:00Z"
+  },
+  {
+    "Id": 4,
+    "title": "Password reset not working",
+    "description": "Customer tried to reset password multiple times but never receives the reset email. Checked spam folder and confirmed email address is correct.",
+    "status": "Closed",
+    "priority": "High",
+    "category": "Account",
+    "customerId": 4,
+    "createdAt": "2024-01-13T16:20:00Z",
+    "updatedAt": "2024-01-14T09:30:00Z"
+  },
+  {
+    "Id": 5,
+    "title": "Integration with Slack not syncing",
+    "description": "The Slack integration was working fine last week but now notifications are not being sent to the designated channel. All permissions appear to be correct.",
+    "status": "In Progress",
+    "priority": "Medium",
+    "category": "Integration",
+    "customerId": 5,
+    "createdAt": "2024-01-13T13:10:00Z",
+    "updatedAt": "2024-01-15T08:45:00Z"
+  },
+  {
+    "Id": 6,
+    "title": "Mobile app crashes on startup",
+    "description": "iOS app crashes immediately after opening. This happens consistently on iPhone 14 with iOS 17.2. Android version works fine.",
+    "status": "Open",
+    "priority": "High",
+    "category": "Mobile",
+    "customerId": 6,
+    "createdAt": "2024-01-12T10:30:00Z",
+    "updatedAt": "2024-01-12T10:30:00Z"
+  },
+  {
+    "Id": 7,
+    "title": "Question about API rate limits",
+    "description": "Developer needs clarification on API rate limits for their Enterprise plan. They're planning to increase their API usage and want to ensure they won't hit limits.",
+    "status": "Closed",
+    "priority": "Low",
+    "category": "API",
+    "customerId": 1,
+    "createdAt": "2024-01-11T15:40:00Z",
+    "updatedAt": "2024-01-12T14:20:00Z"
+  },
+  {
+    "Id": 8,
+    "title": "Data synchronization delay",
+    "description": "Customer notices that data takes 5-10 minutes to sync between devices. This used to be near-instantaneous. Performance has degraded over the past week.",
+    "status": "In Progress",
+    "priority": "Medium",
+    "category": "Performance",
+    "customerId": 7,
+    "createdAt": "2024-01-11T09:15:00Z",
+    "updatedAt": "2024-01-15T11:30:00Z"
+  }
+]

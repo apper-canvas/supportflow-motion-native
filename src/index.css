@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* React Toastify Styles */
+@import 'react-toastify/dist/ReactToastify.css';
+
+/* Custom toast styling */
+.Toastify__toast {
+  @apply rounded-lg font-medium;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  min-height: 56px;
+}
+
+.Toastify__toast--success {
+  @apply bg-white border-l-4 border-success-500 text-gray-800;
+}
+
+.Toastify__toast--error {
+  @apply bg-white border-l-4 border-error-500 text-gray-800;
+}
+
+.Toastify__toast--info {
+  @apply bg-white border-l-4 border-primary-500 text-gray-800;
+}
+
+.Toastify__toast--warning {
+  @apply bg-white border-l-4 border-warning-500 text-gray-800;
+}
+
+.Toastify__progress-bar {
+  @apply bg-gradient-to-r from-primary-500 to-accent-500;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  @apply antialiased;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400;
+}
+
+/* Form Focus Styles */
+.form-input:focus {
+  @apply ring-2 ring-primary-500 ring-opacity-50 border-primary-500;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-select:focus {
+  @apply ring-2 ring-primary-500 ring-opacity-50 border-primary-500;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-textarea:focus {
+  @apply ring-2 ring-primary-500 ring-opacity-50 border-primary-500;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}

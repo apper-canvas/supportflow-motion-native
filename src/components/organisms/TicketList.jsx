@@ -122,12 +122,15 @@ const TicketList = ({ onCreateTicket }) => {
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
-                <tr>
+<tr>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Ticket
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Customer
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Assigned To
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Status
@@ -144,7 +147,7 @@ const TicketList = ({ onCreateTicket }) => {
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                {filteredTickets.map((ticket) => (
+{filteredTickets.map((ticket) => (
                   <tr 
                     key={ticket.Id} 
                     className="hover:bg-gray-50 transition-colors duration-150 cursor-pointer"
@@ -163,6 +166,11 @@ const TicketList = ({ onCreateTicket }) => {
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="text-sm text-gray-900">
                         {getCustomerName(ticket.customerId)}
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-sm text-gray-900">
+                        {ticket.assignedTo || "Unassigned"}
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">

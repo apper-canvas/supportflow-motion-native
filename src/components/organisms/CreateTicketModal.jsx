@@ -9,14 +9,15 @@ import Select from "@/components/atoms/Select"
 import Textarea from "@/components/atoms/Textarea"
 import FormField from "@/components/molecules/FormField"
 import ApperIcon from "@/components/ApperIcon"
-
+const agents = ["Sarah Chen", "Mike Rodriguez", "Emma Thompson"];
 const CreateTicketModal = ({ isOpen, onClose, onSuccess }) => {
-  const [formData, setFormData] = useState({
+const [formData, setFormData] = useState({
     title: "",
     description: "",
     customerId: "",
     priority: "Medium",
-    category: "Technical Issue"
+    category: "Technical Issue",
+    assignedTo: ""
   })
   const [customers, setCustomers] = useState([])
   const [loading, setLoading] = useState(false)
@@ -90,13 +91,14 @@ const CreateTicketModal = ({ isOpen, onClose, onSuccess }) => {
     }
   }
 
-  const handleClose = () => {
+const handleClose = () => {
     setFormData({
       title: "",
       description: "",
       customerId: "",
       priority: "Medium",
-      category: "Technical Issue"
+      category: "Technical Issue",
+      assignedTo: ""
     })
     setErrors({})
     onClose()
@@ -147,7 +149,7 @@ const CreateTicketModal = ({ isOpen, onClose, onSuccess }) => {
             </Select>
           </FormField>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <FormField label="Priority">
               <Select
                 name="priority"
@@ -179,6 +181,21 @@ const CreateTicketModal = ({ isOpen, onClose, onSuccess }) => {
             </FormField>
           </div>
 
+          <FormField label="Assigned To">
+            <Select
+              name="assignedTo"
+              value={formData.assignedTo}
+              onChange={handleInputChange}
+            >
+              <option value="">Select an agent...</option>
+              {agents.map((agent) => (
+                <option key={agent} value={agent}>
+                  {agent}
+                </option>
+              ))}
+            </Select>
+          </FormField>
+
           <FormField label="Description" required error={errors.description}>
             <Textarea
               name="description"
@@ -188,7 +205,6 @@ const CreateTicketModal = ({ isOpen, onClose, onSuccess }) => {
               rows={4}
             />
           </FormField>
-
           <div className="flex justify-end space-x-3 pt-4">
             <Button
               type="button"

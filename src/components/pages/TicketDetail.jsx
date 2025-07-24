@@ -13,6 +13,7 @@ import PlanBadge from "@/components/molecules/PlanBadge"
 import Loading from "@/components/ui/Loading"
 import Error from "@/components/ui/Error"
 import ApperIcon from "@/components/ApperIcon"
+const agents = ["Sarah Chen", "Mike Rodriguez", "Emma Thompson"];
 
 const TicketDetail = () => {
   const { id } = useParams()
@@ -44,7 +45,7 @@ const TicketDetail = () => {
     }
   }
 
-  const handleStatusChange = async (newStatus) => {
+const handleStatusChange = async (newStatus) => {
     try {
       setUpdating(true)
       const updatedTicket = await ticketService.update(id, { status: newStatus })
@@ -70,6 +71,18 @@ const TicketDetail = () => {
     }
   }
 
+  const handleAssignmentChange = async (newAssignment) => {
+    try {
+      setUpdating(true)
+      const updatedTicket = await ticketService.update(id, { assignedTo: newAssignment })
+      setTicket(updatedTicket)
+      toast.success(`Ticket assignment updated to ${newAssignment || "Unassigned"}`)
+    } catch (err) {
+      toast.error(err.message || "Failed to update ticket assignment")
+    } finally {
+      setUpdating(false)
+    }
+  }
   if (loading) {
     return <Loading />
   }
@@ -104,7 +117,7 @@ const TicketDetail = () => {
         {/* Main Content */}
         <div className="lg:col-span-2 space-y-6">
           <Card>
-            <Card.Header>
+<Card.Header>
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <h2 className="text-xl font-semibold text-gray-900 mb-2">
@@ -112,6 +125,8 @@ const TicketDetail = () => {
                   </h2>
                   <div className="flex items-center space-x-4 text-sm text-gray-600">
                     <span>Category: {ticket.category}</span>
+                    <span>•</span>
+                    <span>Assigned to: {ticket.assignedTo || "Unassigned"}</span>
                     <span>•</span>
                     <span>Created {format(new Date(ticket.createdAt), "MMM d, yyyy 'at' h:mm a")}</span>
                     {ticket.updatedAt !== ticket.createdAt && (
@@ -141,12 +156,12 @@ const TicketDetail = () => {
           </Card>
 
           {/* Status and Priority Controls */}
-          <Card>
+<Card>
             <Card.Header>
               <h3 className="text-lg font-semibold text-gray-900">Update Ticket</h3>
             </Card.Header>
             <Card.Content>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Status
@@ -173,6 +188,23 @@ const TicketDetail = () => {
                     <option value="Low">Low</option>
                     <option value="Medium">Medium</option>
                     <option value="High">High</option>
+                  </Select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Assigned To
+                  </label>
+                  <Select
+                    value={ticket.assignedTo || ""}
+                    onChange={(e) => handleAssignmentChange(e.target.value)}
+                    disabled={updating}
+                  >
+                    <option value="">Unassigned</option>
+                    {agents.map((agent) => (
+                      <option key={agent} value={agent}>
+                        {agent}
+                      </option>
+                    ))}
                   </Select>
                 </div>
               </div>

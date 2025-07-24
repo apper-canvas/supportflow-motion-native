@@ -18,13 +18,13 @@ export const ticketService = {
     }
     return { ...ticket }
   },
-
-  async create(ticketData) {
+async create(ticketData) {
     await delay(400)
     const newTicket = {
       ...ticketData,
       Id: Math.max(...tickets.map(t => t.Id)) + 1,
       status: "Open",
+      assignedTo: ticketData.assignedTo || "",
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
     }
@@ -39,9 +39,10 @@ export const ticketService = {
       throw new Error("Ticket not found")
     }
     
-    tickets[index] = {
+tickets[index] = {
       ...tickets[index],
       ...updateData,
+      assignedTo: updateData.assignedTo !== undefined ? updateData.assignedTo : tickets[index].assignedTo,
       updatedAt: new Date().toISOString()
     }
     return { ...tickets[index] }

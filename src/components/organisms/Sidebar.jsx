@@ -16,30 +16,37 @@ const Sidebar = ({ isOpen, onClose }) => {
       <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
         <nav className="mt-5 flex-1 px-2 space-y-2">
           {menuItems.map((item) => (
-            <NavLink
+<NavLink
               key={item.path}
               to={item.path}
-              className={({ isActive }) =>
-                cn(
+              className={() => {
+                const isActiveItem = item.path === "/dashboard" 
+                  ? (location.pathname === "/" || location.pathname === "/dashboard")
+                  : location.pathname === item.path;
+                
+                return cn(
                   "group flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200",
-                  isActive
+                  isActiveItem
                     ? "bg-gradient-to-r from-primary-500 to-blue-600 text-white shadow-lg transform scale-[1.02]"
                     : "text-gray-600 hover:bg-primary-50 hover:text-primary-700 hover:shadow-md"
-                )
-              }
+                );
+              }}
             >
-              {({ isActive }) => (
-                <>
-                  <ApperIcon
-                    name={item.icon}
-                    className={cn(
-                      "mr-3 flex-shrink-0 h-5 w-5 transition-colors duration-200",
-                      isActive ? "text-white" : "text-gray-400 group-hover:text-primary-500"
-                    )}
-                  />
-                  {item.label}
-                </>
-              )}
+              <>
+                <ApperIcon
+                  name={item.icon}
+                  className={cn(
+                    "mr-3 flex-shrink-0 h-5 w-5 transition-colors duration-200",
+                    (() => {
+                      const isActiveItem = item.path === "/dashboard" 
+                        ? (location.pathname === "/" || location.pathname === "/dashboard")
+                        : location.pathname === item.path;
+                      return isActiveItem ? "text-white" : "text-gray-400 group-hover:text-primary-500";
+                    })()
+                  )}
+                />
+                {item.label}
+              </>
             </NavLink>
           ))}
         </nav>
@@ -94,31 +101,38 @@ const Sidebar = ({ isOpen, onClose }) => {
               
               <nav className="mt-5 px-2 space-y-2">
                 {menuItems.map((item) => (
-                  <NavLink
+<NavLink
                     key={item.path}
                     to={item.path}
                     onClick={onClose}
-                    className={({ isActive }) =>
-                      cn(
+                    className={() => {
+                      const isActiveItem = item.path === "/dashboard" 
+                        ? (location.pathname === "/" || location.pathname === "/dashboard")
+                        : location.pathname === item.path;
+                      
+                      return cn(
                         "group flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200",
-                        isActive
+                        isActiveItem
                           ? "bg-gradient-to-r from-primary-500 to-blue-600 text-white shadow-lg"
                           : "text-gray-600 hover:bg-primary-50 hover:text-primary-700 hover:shadow-md"
-                      )
-                    }
+                      );
+                    }}
                   >
-                    {({ isActive }) => (
-                      <>
-                        <ApperIcon
-                          name={item.icon}
-                          className={cn(
-                            "mr-3 flex-shrink-0 h-5 w-5 transition-colors duration-200",
-                            isActive ? "text-white" : "text-gray-400 group-hover:text-primary-500"
-                          )}
-                        />
-                        {item.label}
-                      </>
-                    )}
+                    <>
+                      <ApperIcon
+                        name={item.icon}
+                        className={cn(
+                          "mr-3 flex-shrink-0 h-5 w-5 transition-colors duration-200",
+                          (() => {
+                            const isActiveItem = item.path === "/dashboard" 
+                              ? (location.pathname === "/" || location.pathname === "/dashboard")
+                              : location.pathname === item.path;
+                            return isActiveItem ? "text-white" : "text-gray-400 group-hover:text-primary-500";
+                          })()
+                        )}
+                      />
+                      {item.label}
+                    </>
                   </NavLink>
                 ))}
               </nav>

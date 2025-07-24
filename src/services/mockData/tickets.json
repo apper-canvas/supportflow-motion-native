@@ -8,7 +8,14 @@
     "category": "Technical Issue",
     "customerId": 1,
     "createdAt": "2024-01-15T09:30:00Z",
-    "updatedAt": "2024-01-15T09:30:00Z"
+    "updatedAt": "2024-01-15T09:30:00Z",
+    "statusHistory": [
+      {
+        "status": "Open",
+        "changedAt": "2024-01-15T09:30:00Z",
+        "changedBy": "System"
+      }
+    ]
   },
   {
     "Id": 2,
@@ -19,7 +26,20 @@
     "category": "Billing",
     "customerId": 2,
     "createdAt": "2024-01-14T14:22:00Z",
-    "updatedAt": "2024-01-15T10:15:00Z"
+    "updatedAt": "2024-01-15T10:15:00Z",
+    "statusHistory": [
+      {
+        "status": "Open",
+        "changedAt": "2024-01-14T14:22:00Z",
+        "changedBy": "System"
+      },
+      {
+        "status": "In Progress",
+        "previousStatus": "Open",
+        "changedAt": "2024-01-15T10:15:00Z",
+        "changedBy": "Sarah Chen"
+      }
+    ]
   },
   {
     "Id": 3,
@@ -30,7 +50,14 @@
     "category": "Feature Request",
     "customerId": 3,
     "createdAt": "2024-01-14T11:45:00Z",
-    "updatedAt": "2024-01-14T11:45:00Z"
+    "updatedAt": "2024-01-14T11:45:00Z",
+    "statusHistory": [
+      {
+        "status": "Open",
+        "changedAt": "2024-01-14T11:45:00Z",
+        "changedBy": "System"
+      }
+    ]
   },
   {
     "Id": 4,
@@ -41,7 +68,26 @@
     "category": "Account",
     "customerId": 4,
     "createdAt": "2024-01-13T16:20:00Z",
-    "updatedAt": "2024-01-14T09:30:00Z"
+    "updatedAt": "2024-01-14T09:30:00Z",
+    "statusHistory": [
+      {
+        "status": "Open",
+        "changedAt": "2024-01-13T16:20:00Z",
+        "changedBy": "System"
+      },
+      {
+        "status": "In Progress",
+        "previousStatus": "Open",
+        "changedAt": "2024-01-13T18:45:00Z",
+        "changedBy": "Mike Rodriguez"
+      },
+      {
+        "status": "Closed",
+        "previousStatus": "In Progress",
+        "changedAt": "2024-01-14T09:30:00Z",
+        "changedBy": "Mike Rodriguez"
+      }
+    ]
   },
   {
     "Id": 5,
@@ -52,7 +98,20 @@
     "category": "Integration",
     "customerId": 5,
     "createdAt": "2024-01-13T13:10:00Z",
-    "updatedAt": "2024-01-15T08:45:00Z"
+    "updatedAt": "2024-01-15T08:45:00Z",
+    "statusHistory": [
+      {
+        "status": "Open",
+        "changedAt": "2024-01-13T13:10:00Z",
+        "changedBy": "System"
+      },
+      {
+        "status": "In Progress",
+        "previousStatus": "Open",
+        "changedAt": "2024-01-15T08:45:00Z",
+        "changedBy": "Emma Thompson"
+      }
+    ]
   },
   {
     "Id": 6,
@@ -63,7 +122,14 @@
     "category": "Mobile",
     "customerId": 6,
     "createdAt": "2024-01-12T10:30:00Z",
-    "updatedAt": "2024-01-12T10:30:00Z"
+    "updatedAt": "2024-01-12T10:30:00Z",
+    "statusHistory": [
+      {
+        "status": "Open",
+        "changedAt": "2024-01-12T10:30:00Z",
+        "changedBy": "System"
+      }
+    ]
   },
   {
     "Id": 7,
@@ -74,7 +140,20 @@
     "category": "API",
     "customerId": 1,
     "createdAt": "2024-01-11T15:40:00Z",
-    "updatedAt": "2024-01-12T14:20:00Z"
+    "updatedAt": "2024-01-12T14:20:00Z",
+    "statusHistory": [
+      {
+        "status": "Open",
+        "changedAt": "2024-01-11T15:40:00Z",
+        "changedBy": "System"
+      },
+      {
+        "status": "Closed",
+        "previousStatus": "Open",
+        "changedAt": "2024-01-12T14:20:00Z",
+        "changedBy": "Sarah Chen"
+      }
+    ]
   },
   {
     "Id": 8,
@@ -85,6 +164,19 @@
     "category": "Performance",
     "customerId": 7,
     "createdAt": "2024-01-11T09:15:00Z",
-    "updatedAt": "2024-01-15T11:30:00Z"
+    "updatedAt": "2024-01-15T11:30:00Z",
+    "statusHistory": [
+      {
+        "status": "Open",
+        "changedAt": "2024-01-11T09:15:00Z",
+        "changedBy": "System"
+      },
+      {
+        "status": "In Progress",
+        "previousStatus": "Open",
+        "changedAt": "2024-01-15T11:30:00Z",
+        "changedBy": "Emma Thompson"
+      }
+    ]
   }
 ]

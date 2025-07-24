@@ -46,9 +46,14 @@ const TicketDetail = () => {
   }
 
 const handleStatusChange = async (newStatus) => {
+    if (newStatus === ticket.status) return
+    
     try {
       setUpdating(true)
-      const updatedTicket = await ticketService.update(id, { status: newStatus })
+      const updatedTicket = await ticketService.update(id, { 
+        status: newStatus,
+        changedBy: "Current User" // In a real app, this would be the logged-in user
+      })
       setTicket(updatedTicket)
       toast.success(`Ticket status updated to ${newStatus}`)
     } catch (err) {
@@ -210,6 +215,43 @@ const handleStatusChange = async (newStatus) => {
               </div>
             </Card.Content>
           </Card>
+
+          {/* Status History */}
+          {ticket.statusHistory && ticket.statusHistory.length > 0 && (
+            <Card>
+              <Card.Header>
+                <h3 className="text-lg font-semibold text-gray-900">Status History</h3>
+              </Card.Header>
+              <Card.Content>
+                <div className="space-y-4">
+                  {ticket.statusHistory
+                    .slice()
+                    .reverse()
+                    .map((change, index) => (
+                      <div key={index} className="flex items-center justify-between py-2 border-b last:border-b-0">
+                        <div className="flex items-center space-x-3">
+                          <StatusBadge status={change.status} />
+                          {change.previousStatus && (
+                            <div className="flex items-center space-x-2 text-sm text-gray-500">
+                              <span>from</span>
+                              <StatusBadge status={change.previousStatus} />
+                            </div>
+                          )}
+                        </div>
+                        <div className="text-right">
+                          <div className="text-sm text-gray-600">
+                            {format(new Date(change.changedAt), 'MMM dd, yyyy HH:mm')}
+                          </div>
+                          <div className="text-xs text-gray-500">
+                            by {change.changedBy}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                </div>
+              </Card.Content>
+            </Card>
+          )}
         </div>
 
         {/* Sidebar */}

@@ -20,30 +20,53 @@ export const ticketService = {
   },
 async create(ticketData) {
     await delay(400)
+    const createdAt = new Date().toISOString()
     const newTicket = {
       ...ticketData,
       Id: Math.max(...tickets.map(t => t.Id)) + 1,
       status: "Open",
       assignedTo: ticketData.assignedTo || "",
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
+      createdAt,
+      updatedAt: createdAt,
+      statusHistory: [
+        {
+          status: "Open",
+          changedAt: createdAt,
+          changedBy: "System"
+        }
+      ]
     }
     tickets.push(newTicket)
     return { ...newTicket }
   },
 
-  async update(id, updateData) {
+async update(id, updateData) {
     await delay(300)
     const index = tickets.findIndex(t => t.Id === parseInt(id))
     if (index === -1) {
       throw new Error("Ticket not found")
     }
     
-tickets[index] = {
-      ...tickets[index],
+    const updatedAt = new Date().toISOString()
+    const currentTicket = tickets[index]
+    
+    // Track status changes
+    let statusHistory = [...(currentTicket.statusHistory || [])]
+    if (updateData.status && updateData.status !== currentTicket.status) {
+      statusHistory.push({
+        status: updateData.status,
+        previousStatus: currentTicket.status,
+        changedAt: updatedAt,
+        changedBy: updateData.changedBy || "System"
+      })
+    }
+
+    tickets[index] = {
+      ...currentTicket,
       ...updateData,
-      assignedTo: updateData.assignedTo !== undefined ? updateData.assignedTo : tickets[index].assignedTo,
-      updatedAt: new Date().toISOString()
+      assignedTo: updateData.assignedTo !== undefined ? updateData.assignedTo : currentTicket.assignedTo,
+      updatedAt,
+      statusHistory
     }
     return { ...tickets[index] }
   },
